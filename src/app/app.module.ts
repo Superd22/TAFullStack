@@ -1,3 +1,4 @@
+import { ChatRoomService } from './services/chat-room.service';
 import { SendBirdService } from './services/send-bird.service';
 import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './routing/app-routing.module';
@@ -9,7 +10,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { ChatRoomComponent } from './components/chat-room/chat-room.component';
 import { UserListComponent } from './components/chat-room/user-list/user-list.component';
 import { ChatRollComponent } from './components/chat-room/chat-roll/chat-roll.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ChatTabSelectComponent } from './components/chat-room/chat-tab-select/chat-tab-select.component';
 
 @NgModule({
   declarations: [
@@ -17,15 +19,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     LandingComponent,
     ChatRoomComponent,
     UserListComponent,
-    ChatRollComponent
+    ChatRollComponent,
+    ChatTabSelectComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     MaterialModule
   ],
-  providers: [SendBirdService],
+  providers: [SendBirdService, ChatRoomService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

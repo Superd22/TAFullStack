@@ -1,6 +1,7 @@
 import { SendBirdService } from './../../services/send-bird.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tafullstack-landing',
@@ -9,13 +10,15 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class LandingComponent implements OnInit {
 
+  public busy: boolean = false;
+
   /** form control for the nickname the user is inputing */
   public nickNameFormControl = new FormControl('', [
     Validators.minLength(3),
     Validators.required
   ]);
 
-  constructor(protected sb: SendBirdService) {
+  constructor(protected sb: SendBirdService, protected router: Router) {
     this.subscribeUserChange();
   }
 
@@ -28,7 +31,9 @@ export class LandingComponent implements OnInit {
    */
   public async submitNewNickName() {
     if (this.nickNameFormControl.valid) {
+      this.busy = true;
       await this.sb.registerUser(this.nickNameFormControl.value);
+      this.busy = false;
     }
     else { }
   }
@@ -40,6 +45,7 @@ export class LandingComponent implements OnInit {
     this.sb.currentSbUser.subscribe((user) => {
       if (user) {
         // We have an user, we no longer need to be on the landing page
+        this.router.navigate(['/chat']);
       }
     });
   }

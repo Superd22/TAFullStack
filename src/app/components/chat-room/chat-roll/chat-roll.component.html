@@ -1,3 +1,21 @@
-<p>
-  chat-roll works!
-</p>
+<div class="chat-wrapper">
+
+  <div class="text-messages">
+    <mat-list>
+      <mat-list-item dense *ngFor="let message of messages">
+        <img matListAvatar [src]="message._sender.profileUrl">
+        <h3 matLine> {{message._sender.userId}} </h3>
+        <p matLine> {{message.message}} </p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+
+  <div class="actions">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Type your message" [(ngModel)]="newMsgText">
+    </mat-form-field>
+
+    <button mat-button color="primary" (click)="sendMessage()">Send!</button>
+  </div>
+</div>

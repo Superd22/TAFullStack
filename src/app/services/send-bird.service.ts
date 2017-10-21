@@ -1,5 +1,5 @@
 import { SendBirdInstance, User } from '../../sendbird.d';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -18,11 +18,11 @@ export class SendBirdService {
   /** app-wide sendbird instance */
   public get sb() { return this._sb }
 
-  private _currentSbUser: ReplaySubject<User> = new ReplaySubject(1);
+  private _currentSbUser: BehaviorSubject<User> = new BehaviorSubject(null);
   public get currentSbUser() { return this._currentSbUser; }
 
   constructor() {
-
+    this.registerUser(String(Math.floor(Math.random() * 9e15)));
   }
 
   /**
@@ -30,11 +30,14 @@ export class SendBirdService {
    * @param userName unique name to chose
    */
   public async registerUser(userName: string) {
-    this._sb.connect(userName, (user, error) => {
+    return new Promise((resolve, reject) => this._sb.connect(userName, (user, error) => {
       if (!error) {
         this._currentSbUser.next(user);
-        console.log(user);
+        resolve(user);
       }
-    });
+      else reject(error);
+    }));
   }
+
+  public 
 }

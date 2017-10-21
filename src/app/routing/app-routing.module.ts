@@ -1,3 +1,4 @@
+import { ChatGuard } from './routes/guard/chat-guard.service';
 import { environment } from './../../environments/environment';
 import { appRoutes } from './routes/_.routes';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
     })
   ],
   exports: [RouterModule],
-  declarations: []
+  declarations: [],
+  providers: [ChatGuard]
 })
 export class AppRoutingModule { }

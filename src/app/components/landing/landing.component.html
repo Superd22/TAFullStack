@@ -16,5 +16,6 @@
   <mat-card-actions>
     <button mat-raised-button color="primary" [disabled]="!nickNameFormControl.valid" (click)="submitNewNickName()">Let's go!</button>
   </mat-card-actions>
-
+  <mat-progress-bar *ngIf="busy" mode="indeterminate"></mat-progress-bar>
+  
 </mat-card>
