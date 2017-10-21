@@ -7,15 +7,11 @@
   </div>
   <div class="text-messages" tafullstackScrollable>
     <mat-list>
-      <mat-list-item dense *ngFor="let message of messages">
-        <img matListAvatar [src]="message._sender.profileUrl">
-        <h3 matLine> {{message._sender.userId}} </h3>
-        <p matLine> {{message.message}} </p>
-      </mat-list-item>
+      <tafullstack-chat-roll-message *ngFor="let message of messages" [message]="message"> </tafullstack-chat-roll-message>
     </mat-list>
 
-    <p class="no-message" *ngIf="messages.length == 0">Oh no! It seems there isn't any messages yet... <br />
-    Feel free to add the first one ;)</p>
+    <p class="no-message" *ngIf="messages.length == 0">Oh no! It seems there isn't any messages yet...
+      <br /> Feel free to add the first one ;)</p>
   </div>
 
 

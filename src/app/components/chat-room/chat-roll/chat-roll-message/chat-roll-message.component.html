@@ -1,0 +1,6 @@
+<mat-list-item dense [ngClass]="{self: isOwnMessage}">
+  <img matListAvatar [src]="message._sender.profileUrl" (click)="createDM()">
+  <h3 matLine> {{message._sender.userId}} </h3>
+  <p matLine> {{message.message}} </p>
+
+</mat-list-item>

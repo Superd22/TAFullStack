@@ -1,4 +1,4 @@
-import { OpenChannel } from './../../sendbird.d';
+import { OpenChannel, User } from './../../sendbird.d';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { SendBirdService } from './send-bird.service';
 import { BaseChannel } from '../../sendbird.d';
@@ -47,4 +47,24 @@ export class ChatRoomService {
     }
   }
 
+  /**
+   * Creates a private 1 on 1 with the supplied user
+   * @param user 
+   */
+  public createDmWith(user: User);
+  public createDmWith(user: { userId: any });
+  public createDmWith(userId: string);
+  public createDmWith(u: any) {
+    if (typeof u === typeof {}) u = u.userId;
+
+    if (this.sb.isCurrentUser(u)) throw "trying to create a convo with oneself. -that's deep-";
+
+    this.sb.sb.GroupChannel.createChannelWithUserIds([u], true, (groupChannel, error) => {
+      if (error) {
+        return;
+      }
+
+      this.setCurrentChatRoom(groupChannel);
+    });
+  }
 }

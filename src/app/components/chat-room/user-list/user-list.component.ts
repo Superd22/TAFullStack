@@ -46,15 +46,7 @@ export class UserListComponent implements OnInit {
    * @param user 
    */
   public createDMWith(user: User) {
-    if (this.isCurrentUser(user)) throw "trying to create a convo with oneself. -that's deep-";
 
-    this.sb.sb.GroupChannel.createChannelWithUserIds([user.userId], true, (groupChannel, error) => {
-      if (error) {
-        return;
-      }
-
-      this.croom.setCurrentChatRoom(groupChannel);
-    });
   }
 
   /**

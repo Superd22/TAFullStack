@@ -38,5 +38,18 @@ export class SendBirdService {
       else reject(error);
     }));
   }
-  
+
+
+  /**
+   * Check if the supplied user is the current one
+   * @param user 
+   * @param userId the id of the user to check against
+   */
+  public isCurrentUser(user: User): boolean;
+  public isCurrentUser(userId: any): boolean;
+  public isCurrentUser(u): boolean {
+    const uid = typeof u === typeof {} ? u.userId : u;
+    return uid === this.currentSbUser.getValue().userId;
+  }
+
 }
