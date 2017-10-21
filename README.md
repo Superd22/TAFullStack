@@ -15,6 +15,14 @@
 **Chat bots are currently only limited to group chat, and there is no way in the current app to pm an user who isn't in at least one open chat, so this feature got scrapped.**
 see @https://docs.sendbird.com/platform#bot_interface
 
+## Not implemented but would've been nice
+- Notifications
+- Ability to see who PMd you
+- New messages since last visit
+- new messages in not active tab
+- Channel remove
+- auto refresh on remote channel creation
+
 ## How to install
 ``` 
 ~ git clone https://github.com/Superd22/TAFullStack/
