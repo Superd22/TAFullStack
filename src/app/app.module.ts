@@ -12,6 +12,7 @@ import { UserListComponent } from './components/chat-room/user-list/user-list.co
 import { ChatRollComponent } from './components/chat-room/chat-roll/chat-roll.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ChatTabSelectComponent } from './components/chat-room/chat-tab-select/chat-tab-select.component';
+import { ScrollableDirective } from './directives/scrollable.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ChatTabSelectComponent } from './components/chat-room/chat-tab-select/c
     ChatRoomComponent,
     UserListComponent,
     ChatRollComponent,
-    ChatTabSelectComponent
+    ChatTabSelectComponent,
+    ScrollableDirective
   ],
   imports: [
     BrowserModule,

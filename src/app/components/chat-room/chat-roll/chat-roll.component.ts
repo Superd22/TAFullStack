@@ -1,7 +1,8 @@
 import { BaseChannel, PreviousMessageListQuery, UserMessage, FileMessage, AdminMessage } from './../../../../sendbird.d';
 import { ChatRoomService } from './../../../services/chat-room.service';
 import { SendBirdService } from './../../../services/send-bird.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ScrollableDirective } from '../../../directives/scrollable.directive';
 
 @Component({
   selector: 'tafullstack-chat-roll',
@@ -23,6 +24,8 @@ export class ChatRollComponent implements OnInit {
   /** message currently being typed */
   public newMsgText: string = "";
 
+  @ViewChild(ScrollableDirective)
+  private _scrollable: ScrollableDirective;
 
   constructor(protected sb: SendBirdService, protected croom: ChatRoomService) {
     this._channelHandler.onMessageReceived = this.onMessageReceived;
@@ -43,6 +46,10 @@ export class ChatRollComponent implements OnInit {
     this.sb.sb.removeChannelHandler("chat-roll-handler");
   }
 
+  /**
+   * Check if the given channel is the one currently being displayed
+   * @param channel 
+   */
   public isCurrentChannel(channel: BaseChannel) {
     return channel.url === this.currentChannel.url;
   }
@@ -54,7 +61,10 @@ export class ChatRollComponent implements OnInit {
    */
   public onMessageReceived = (channel: BaseChannel, message: UserMessage) => {
     console.log("RECEIVED MESSAGES", channel, message);
-    if (this.isCurrentChannel(channel)) this.messages.push(message);
+    if (this.isCurrentChannel(channel)) {
+      this.messages.push(message);
+      this._scrollable.scrollToBottomIfNotUp();
+    }
   }
 
   /**
@@ -82,16 +92,20 @@ export class ChatRollComponent implements OnInit {
 
         // Push them into the display array
         this.messages = this.messages.concat(messages);
-
+        this._scrollable.scrollToBottomIfNotUp();
       });
     }
   }
 
+  /**
+   * Sends the current typing message to the current channel
+   */
   public sendMessage() {
     if (this.newMsgText)
       this.currentChannel.sendUserMessage(this.newMsgText, (message, error) => {
         this.newMsgText = "";
         this.messages.push(message);
+        this._scrollable.scrollToBottomIfNotUp();
       });
   }
 

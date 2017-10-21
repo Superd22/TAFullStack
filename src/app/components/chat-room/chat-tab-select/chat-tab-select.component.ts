@@ -33,8 +33,10 @@ export class ChatTabSelectComponent implements OnInit {
       if (error) {
         return;
       }
-      console.log(list);
       this.channelList = list;
+
+      // If we don't have a channel, navigate to the first open one.
+      if(!this.croom.currentChannel.getValue()) this.navigateToChannel(this.channelList[0]);
     });
   }
 
