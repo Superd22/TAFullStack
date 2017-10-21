@@ -156,7 +156,7 @@ AppModule = __decorate([
 /***/ "../../../../../src/app/components/chat-room/chat-roll/chat-roll-message/chat-roll-message.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-list-item dense [ngClass]=\"{self: isOwnMessage}\">\n  <img matListAvatar [src]=\"message._sender.profileUrl\" (click)=\"createDM()\">\n  <h3 matLine> {{message._sender.userId}} </h3>\n  <p matLine> {{message.message}} </p>\n\n</mat-list-item>\n\n<mat-card matLine *ngIf=\"ytEmbed\" class=\"ytEmbed\">\n  <mat-card-title>{{ytEmbed.title}}</mat-card-title>\n  <mat-card-subtitle>{{ytEmbed.author_name}}</mat-card-subtitle>\n  <mat-card-content [innerHTML]=\"ytEmbed.html\">\n\n  </mat-card-content>\n</mat-card>"
+module.exports = "<mat-list-item dense [ngClass]=\"{self: isOwnMessage}\">\n  <img matListAvatar [src]=\"message._sender.profileUrl\" (click)=\"createDM()\">\n  <h3 matLine> {{message._sender.userId}} </h3>\n  <p matLine> {{message.message}} </p>\n\n</mat-list-item>\n\n<mat-card matLine *ngIf=\"ytEmbed\" class=\"ytEmbed\"  [ngClass]=\"{self: isOwnMessage}\">\n  <mat-card-title>{{ytEmbed.title}}</mat-card-title>\n  <mat-card-subtitle>{{ytEmbed.author_name}}</mat-card-subtitle>\n  <mat-card-content [innerHTML]=\"ytEmbed.html\">\n\n  </mat-card-content>\n</mat-card>"
 
 /***/ }),
 
@@ -168,7 +168,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".ytEmbed {\n  margin: 24px;\n  width: 500px; }\n\n.mat-list-item.self {\n  text-align: right; }\n  .mat-list-item.self ::ng-deep .mat-list-item-content {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: row-reverse;\n            flex-direction: row-reverse; }\n\n.mat-list-item .mat-list-avatar {\n  cursor: pointer; }\n", ""]);
+exports.push([module.i, ".ytEmbed {\n  margin: 24px;\n  width: 500px; }\n  .ytEmbed.self {\n    margin-left: auto; }\n\n.mat-list-item.self {\n  text-align: right; }\n  .mat-list-item.self ::ng-deep .mat-list-item-content {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n        -ms-flex-direction: row-reverse;\n            flex-direction: row-reverse; }\n\n.mat-list-item .mat-list-avatar {\n  cursor: pointer; }\n", ""]);
 
 // exports
 
