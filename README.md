@@ -11,7 +11,9 @@
 - [x] Implement tabs to switch between channels
 - [x] Implement 1-to-1 channels (Private chats)
 - [x] Implement channel creation
-- [ ] ~~Implement a chat bot that displays the current bitcoin value when someone types !bitcoin~~ : **Chat bots are urrently only limited to group chat, and there is no way in the current app to pm an user who isn't in at least one open chat, so this feature got scrapped.**
+- [ ] ~~Implement a chat bot that displays the current bitcoin value when someone types !bitcoin~~ : 
+**Chat bots are currently only limited to group chat, and there is no way in the current app to pm an user who isn't in at least one open chat, so this feature got scrapped.**
+see @https://docs.sendbird.com/platform#bot_interface
 
 ## How to install
 ``` 
