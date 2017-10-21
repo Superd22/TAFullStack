@@ -1,6 +1,9 @@
 .ytEmbed {
     margin:24px;
     width:500px;
+    &.self {
+        margin-left: auto;
+    }
 }
 
 .mat-list-item {
