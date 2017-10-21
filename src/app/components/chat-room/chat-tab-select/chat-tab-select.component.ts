@@ -1,3 +1,4 @@
+import { FormControl, Validators } from '@angular/forms';
 import { ChatRoomService } from './../../../services/chat-room.service';
 import { OpenChannel } from './../../../../sendbird.d';
 import { SendBirdService } from './../../../services/send-bird.service';
@@ -15,6 +16,8 @@ import { Component, OnInit } from '@angular/core';
 export class ChatTabSelectComponent implements OnInit {
 
   public channelList: OpenChannel[];
+  public createMode = false;
+  public channelCreate: FormControl;
 
   constructor(protected sb: SendBirdService, protected croom: ChatRoomService) { }
 
@@ -36,7 +39,7 @@ export class ChatTabSelectComponent implements OnInit {
       this.channelList = list;
 
       // If we don't have a channel, navigate to the first open one.
-      if(!this.croom.currentChannel.getValue()) this.navigateToChannel(this.channelList[0]);
+      if (!this.croom.currentChannel.getValue()) this.navigateToChannel(this.channelList[0]);
     });
   }
 
@@ -48,5 +51,36 @@ export class ChatTabSelectComponent implements OnInit {
     this.croom.setCurrentChatRoom(channel);
   }
 
-  
+
+  /**
+   * Toggles the creation mode on
+   */
+  public createChannel() {
+    this.createMode = true;
+    this.channelCreate = new FormControl("", [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20)
+    ]);
+  }
+
+  /**
+   * Cancel the creation of a new channel
+   */
+  public cancelCreation() {
+    this.createMode = false;
+  }
+
+  /**
+   * Submits a new channel
+   */
+  public submitNewChannel() {
+    if (this.channelCreate.valid)
+      this.sb.sb.OpenChannel.createChannel(this.channelCreate.value, null, null, (newChannel) => {
+        this.channelList.push(newChannel);
+        this.navigateToChannel(newChannel);
+        this.cancelCreation();
+      });
+  }
+
 }

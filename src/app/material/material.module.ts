@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatCardModule, MatToolbarModule, MatInputModule, MatProgressBarModule, MatTabsModule, MatListModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatToolbarModule, MatInputModule, MatProgressBarModule, MatTabsModule, MatListModule, MatIconModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const materialImports = [
   MatButtonModule, MatCardModule, MatToolbarModule, MatInputModule,
-  MatProgressBarModule, BrowserAnimationsModule, MatTabsModule, MatListModule
+  MatProgressBarModule, BrowserAnimationsModule, MatTabsModule, MatListModule,
+  MatIconModule
 ];
 
 @NgModule({

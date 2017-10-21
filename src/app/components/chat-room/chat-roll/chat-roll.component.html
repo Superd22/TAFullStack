@@ -13,6 +13,9 @@
         <p matLine> {{message.message}} </p>
       </mat-list-item>
     </mat-list>
+
+    <p class="no-message" *ngIf="messages.length == 0">Oh no! It seems there isn't any messages yet... <br />
+    Feel free to add the first one ;)</p>
   </div>
 
 

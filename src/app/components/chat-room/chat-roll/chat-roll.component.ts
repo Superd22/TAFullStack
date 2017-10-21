@@ -88,7 +88,7 @@ export class ChatRollComponent implements OnInit {
    */
   private fetchMessagesOfChannel() {
     // Ensure we're not already querying 
-    if (!this._queryingMessageList) {
+    if (!this._queryingMessageList && this._messageListQuery.hasMore) {
       // We're now querying
       this._queryingMessageList = true;
       // Get 25 latest message we don't already have

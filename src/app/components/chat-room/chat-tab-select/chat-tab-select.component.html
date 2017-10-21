@@ -2,4 +2,34 @@
   <a mat-tab-link *ngFor="let channel of channelList" (click)="navigateToChannel(channel)">
     {{channel.name}}
   </a>
+
+  <a mat-tab-link (click)="createChannel()">
+    <mat-icon>add</mat-icon>
+    Create a channel
+  </a>
 </nav>
+
+<mat-card *ngIf="createMode">
+  <mat-card-title>Create a new channel</mat-card-title>
+  <mat-card-subtitle>Just enter your channel name and tab the button, as easy as that.</mat-card-subtitle>
+
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput placeholder="An amazing channel name" [formControl]="channelCreate">
+      <mat-error *ngIf="channelCreate.hasError('required')">
+        Channel name is required
+      </mat-error>
+      <mat-error *ngIf="channelCreate.hasError('minlength')">
+        Channel name needs to be at least 3 chars.
+      </mat-error>
+      <mat-error *ngIf="channelCreate.hasError('maxlength')">
+        Channel name needs to be at most 20 chars.
+      </mat-error>
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button (click)="cancelCreation()">Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="!channelCreate.valid" (click)="submitNewChannel()">Create my channel !</button>
+  </mat-card-actions>
+</mat-card>
