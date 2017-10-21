@@ -1,9 +1,9 @@
 <mat-list dense>
-  <mat-list-item *ngFor="let user of displayUsers">
+  <mat-list-item *ngFor="let user of displayUsers" [ngClass]="{self: isCurrentUser(user)}">
     <img matListAvatar [src]="user.profileUrl">
     <h3 matLine> {{user.userId}} </h3>
 
-    <button mat-icon-button>
+    <button mat-icon-button *ngIf="!isCurrentUser(user)" (click)="createDMWith(user)">
       <mat-icon>email</mat-icon>
     </button>
 

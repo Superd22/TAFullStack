@@ -38,6 +38,5 @@ export class SendBirdService {
       else reject(error);
     }));
   }
-
-  public 
+  
 }

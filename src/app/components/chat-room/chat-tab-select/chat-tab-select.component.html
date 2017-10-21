@@ -1,4 +1,5 @@
 <nav mat-tab-nav-bar>
+  <a mat-tab-link *ngIf="currentChannel?.isGroupChannel()" active="true" class="private">Private convo</a>
   <a mat-tab-link [active]="isSelected(channel)" *ngFor="let channel of channelList" (click)="navigateToChannel(channel)">
     {{channel.name}}
   </a>

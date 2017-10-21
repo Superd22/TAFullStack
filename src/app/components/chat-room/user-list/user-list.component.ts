@@ -28,7 +28,7 @@ export class UserListComponent implements OnInit {
       if (!channel) return;
 
       this._currentChannel = channel;
-      if (this._currentChannel.isOpenChannel) this.hydrateOpenChannel();
+      if (this._currentChannel.isOpenChannel()) this.hydrateOpenChannel();
       else this.hydratePrivateChannel();
     });
   }
@@ -39,6 +39,30 @@ export class UserListComponent implements OnInit {
 
   ngOnDestroy() {
     this.sb.sb.removeChannelHandler("user-list-handler");
+  }
+
+  /**
+   * Create a private convo with the supplied user
+   * @param user 
+   */
+  public createDMWith(user: User) {
+    if (this.isCurrentUser(user)) throw "trying to create a convo with oneself. -that's deep-";
+
+    this.sb.sb.GroupChannel.createChannelWithUserIds([user.userId], true, (groupChannel, error) => {
+      if (error) {
+        return;
+      }
+
+      this.croom.setCurrentChatRoom(groupChannel);
+    });
+  }
+
+  /**
+   * Check if the supplied user is the current one
+   * @param user 
+   */
+  public isCurrentUser(user: User): boolean {
+    return user.userId === this.sb.currentSbUser.getValue().userId;
   }
 
   /**

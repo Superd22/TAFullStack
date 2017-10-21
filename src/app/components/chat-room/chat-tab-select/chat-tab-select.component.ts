@@ -19,6 +19,8 @@ export class ChatTabSelectComponent implements OnInit {
   public createMode = false;
   public channelCreate: FormControl;
 
+  public get currentChannel() { return this.croom.currentChannel.getValue(); }
+
   constructor(protected sb: SendBirdService, protected croom: ChatRoomService) { }
 
   ngOnInit() {
@@ -26,7 +28,7 @@ export class ChatTabSelectComponent implements OnInit {
   }
 
   public isSelected(channel: BaseChannel): boolean {
-    return this.croom.currentChannel.getValue().url === channel.url;
+    return this.currentChannel.url === channel.url;
   }
 
   /**

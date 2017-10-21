@@ -36,12 +36,13 @@ export class ChatRoomService {
       if (oldChan && oldChan.url === newChannel.url) return;
 
       // If we were in an open channel before, stop listening to it now.
-      if (oldChan && oldChan.isOpenChannel()) (<OpenChannel>newChannel).exit((channel, error) => { });
+      if (oldChan && oldChan.isOpenChannel()) (<OpenChannel>oldChan).exit((channel, error) => { });
 
       // If we're setting an open channel as the current, we want to enter it (subscribe to events in it)
       if (newChannel.isOpenChannel()) (<OpenChannel>newChannel).enter((openChannel, error) => { });
 
       // Finally we can tell the app this is now the new main channel
+      console.log("nexting", newChannel);
       this._currentChannel.next(newChannel);
     }
   }
