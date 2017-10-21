@@ -17,7 +17,7 @@ export class ChatRollComponent implements OnInit {
   private _messageListQuery: PreviousMessageListQuery;
   private _channelHandler = new this.sb.sb.ChannelHandler();
   /** if we're currently querying for more messages  */
-  private _queryingMessageList: boolean = false;
+  public _queryingMessageList: boolean = false;
   /** display messages */
   public messages: (UserMessage | FileMessage | AdminMessage)[] = [];
 
@@ -29,6 +29,12 @@ export class ChatRollComponent implements OnInit {
 
   constructor(protected sb: SendBirdService, protected croom: ChatRoomService) {
     this._channelHandler.onMessageReceived = this.onMessageReceived;
+  }
+
+  ngAfterViewInit() {
+    this._scrollable.onTop.subscribe((event) => {
+      this.fetchMessagesOfChannel();
+    });
   }
 
   ngOnInit() {
@@ -91,7 +97,7 @@ export class ChatRollComponent implements OnInit {
         if (error) return;
 
         // Push them into the display array
-        this.messages = this.messages.concat(messages);
+        this.messages = messages.concat(this.messages);
         this._scrollable.scrollToBottomIfNotUp();
       });
     }

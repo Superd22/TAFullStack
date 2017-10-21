@@ -1,5 +1,10 @@
 <div class="chat-wrapper">
 
+  <div class="fetching" *ngIf="_queryingMessageList">
+    Fetching more messages ...
+
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
   <div class="text-messages" tafullstackScrollable>
     <mat-list>
       <mat-list-item dense *ngFor="let message of messages">
