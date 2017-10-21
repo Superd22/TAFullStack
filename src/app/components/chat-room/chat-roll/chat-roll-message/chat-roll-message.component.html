@@ -4,3 +4,11 @@
   <p matLine> {{message.message}} </p>
 
 </mat-list-item>
+
+<mat-card matLine *ngIf="ytEmbed" class="ytEmbed">
+  <mat-card-title>{{ytEmbed.title}}</mat-card-title>
+  <mat-card-subtitle>{{ytEmbed.author_name}}</mat-card-subtitle>
+  <mat-card-content [innerHTML]="ytEmbed.html">
+
+  </mat-card-content>
+</mat-card>
