@@ -1,27 +1,24 @@
 # TAFullStack
+**live demo:** https://superd22.github.io/TAFullStack/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
+## Features 
+- [x] The user should be able to submit a nickname of his choice on the first page to access the chat.
+- [x] One single public channel with every logged-in user displayed on the side
+- [x] The main content area should display 25 messages, and should load more if the users scrolls all the way to the top (Like Slack, Hipchat, etc.)
+- [x] The user should be able to send messages using an input field below the main content area.
 
-## Development server
+- [x] Expand youtube links to display the Thumbnail and basic details about a video in the chat
+- [x] Implement tabs to switch between channels
+- [x] Implement 1-to-1 channels (Private chats)
+- [x] Implement channel creation
+- [ ] ~~Implement a chat bot that displays the current bitcoin value when someone types !bitcoin~~ : **Chat bots are urrently only limited to group chat, and there is no way in the current app to pm an user who isn't in at least one open chat, so this feature got scrapped.**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## How to install
+``` 
+~ git clone https://github.com/Superd22/TAFullStack/
+~ cd TAFullStack/
+~ npm install
+``` 
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## How to launch
+Either via the [live demo](https://superd22.github.io/TAFullStack/) or `npm start` to build localy.
