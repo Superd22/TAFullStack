@@ -1,5 +1,5 @@
 <nav mat-tab-nav-bar>
-  <a mat-tab-link *ngFor="let channel of channelList" (click)="navigateToChannel(channel)">
+  <a mat-tab-link [active]="isSelected(channel)" *ngFor="let channel of channelList" (click)="navigateToChannel(channel)">
     {{channel.name}}
   </a>
 

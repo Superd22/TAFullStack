@@ -1,6 +1,6 @@
 import { FormControl, Validators } from '@angular/forms';
 import { ChatRoomService } from './../../../services/chat-room.service';
-import { OpenChannel } from './../../../../sendbird.d';
+import { OpenChannel, BaseChannel } from './../../../../sendbird.d';
 import { SendBirdService } from './../../../services/send-bird.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -25,6 +25,9 @@ export class ChatTabSelectComponent implements OnInit {
     this.getAccessibleChats();
   }
 
+  public isSelected(channel: BaseChannel): boolean {
+    return this.croom.currentChannel.getValue().url === channel.url;
+  }
 
   /**
    * Fetch a list of all the chats we have access to from the back-end

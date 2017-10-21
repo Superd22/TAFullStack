@@ -1,3 +1,11 @@
-<p>
-  user-list works!
-</p>
+<mat-list dense>
+  <mat-list-item *ngFor="let user of displayUsers">
+    <img matListAvatar [src]="user.profileUrl">
+    <h3 matLine> {{user.userId}} </h3>
+
+    <button mat-icon-button>
+      <mat-icon>email</mat-icon>
+    </button>
+
+  </mat-list-item>
+</mat-list>
