@@ -46,7 +46,7 @@ export class UserListComponent implements OnInit {
    * @param user 
    */
   public createDMWith(user: User) {
-
+    this.croom.createDmWith(user);
   }
 
   /**

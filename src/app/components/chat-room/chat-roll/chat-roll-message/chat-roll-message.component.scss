@@ -2,3 +2,14 @@
     margin:24px;
     width:500px;
 }
+
+.mat-list-item {
+    &.self {
+        ::ng-deep .mat-list-item-content {flex-direction: row-reverse;}
+        text-align: right;
+    }
+    
+    .mat-list-avatar {
+        cursor:pointer;
+    }
+}

@@ -15,6 +15,7 @@ import { ChatTabSelectComponent } from './components/chat-room/chat-tab-select/c
 import { ScrollableDirective } from './directives/scrollable.directive';
 import { ChatRollMessageComponent } from './components/chat-room/chat-roll/chat-roll-message/chat-roll-message.component';
 
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -34,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
+    FlexLayoutModule,
     HttpClientModule
   ],
   providers: [SendBirdService, ChatRoomService],

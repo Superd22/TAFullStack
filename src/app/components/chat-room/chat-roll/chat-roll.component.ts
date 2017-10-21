@@ -44,6 +44,7 @@ export class ChatRollComponent implements OnInit {
       if (currentChannel) {
         this.resetToChannel(currentChannel);
         this.fetchMessagesOfChannel();
+        this._scrollable.forceBottom();
       }
     });
   }
@@ -66,7 +67,6 @@ export class ChatRollComponent implements OnInit {
    * @param message 
    */
   public onMessageReceived = (channel: BaseChannel, message: UserMessage) => {
-    console.log("RECEIVED MESSAGES", channel, message);
     if (this.isCurrentChannel(channel)) {
       this.messages.push(message);
       this._scrollable.scrollToBottomIfNotUp();

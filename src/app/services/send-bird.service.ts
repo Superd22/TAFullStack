@@ -22,7 +22,7 @@ export class SendBirdService {
   public get currentSbUser() { return this._currentSbUser; }
 
   constructor() {
-    this.registerUser(String(Math.floor(Math.random() * 9e15)));
+    //this.registerUser(String(Math.floor(Math.random() * 9e15)));
   }
 
   /**

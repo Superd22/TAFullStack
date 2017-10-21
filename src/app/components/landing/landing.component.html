@@ -1,21 +1,26 @@
-<mat-card>
-  <mat-card-title>Welcome to TAFullStack</mat-card-title>
-  <mat-card-subtitle>Please chose an username</mat-card-subtitle>
+<div fxLayout class="wrapper">
+  <div class="card-wrap">
+    <mat-card>
+      <mat-card-title>Welcome to TAFullStack</mat-card-title>
+      <mat-card-subtitle>Please chose an username</mat-card-subtitle>
 
-  <mat-card-content>
-    <mat-form-field>
-      <input matInput placeholder="Some witty nickname" [formControl]="nickNameFormControl">
-      <mat-error *ngIf="nickNameFormControl.hasError('required')">
-        Username is required
-      </mat-error>
-      <mat-error *ngIf="nickNameFormControl.hasError('minlength')">
-        Username needs to be at least 3 chars.
-      </mat-error>
-    </mat-form-field>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" [disabled]="!nickNameFormControl.valid" (click)="submitNewNickName()">Let's go!</button>
-  </mat-card-actions>
-  <mat-progress-bar *ngIf="busy" mode="indeterminate"></mat-progress-bar>
-  
-</mat-card>
+      <mat-card-content>
+        <mat-form-field fxFlex="80">
+          <input matInput placeholder="Some witty nickname" [formControl]="nickNameFormControl">
+          <mat-error *ngIf="nickNameFormControl.hasError('required')">
+            Username is required
+          </mat-error>
+          <mat-error *ngIf="nickNameFormControl.hasError('minlength')">
+            Username needs to be at least 3 chars.
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <div fxFlex="100"></div>
+        <button fxFlex="35" mat-raised-button color="primary" [disabled]="!nickNameFormControl.valid" (click)="submitNewNickName()">Let's go!</button>
+      </mat-card-actions>
+
+    </mat-card>
+    <mat-progress-bar *ngIf="busy" mode="indeterminate"></mat-progress-bar>
+  </div>
+</div>

@@ -1,22 +1,24 @@
-<div class="chat-wrapper">
+<div class="chat-wrapper" fxLayout="column">
 
   <div class="fetching" *ngIf="_queryingMessageList">
-    Fetching more messages ...
-
+    <p> Fetching more messages ...</p>
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
-  <div class="text-messages" tafullstackScrollable>
+  <div class="text-messages" tafullstackScrollable fxFlex="100">
     <mat-list>
       <tafullstack-chat-roll-message *ngFor="let message of messages" [message]="message"> </tafullstack-chat-roll-message>
     </mat-list>
 
-    <p class="no-message" *ngIf="messages.length == 0">Oh no! It seems there isn't any messages yet...
-      <br /> Feel free to add the first one ;)</p>
+    <div class="no-message" *ngIf="messages.length == 0 && !_queryingMessageList">
+      <h2>Oh no! It seems there isn't any messages yet...</h2>
+      <p> Feel free to add the first one ;) </p>
+    </div>
+
   </div>
 
 
-  <div class="actions">
-    <mat-form-field class="example-full-width">
+  <div fxLayout class="actions" fxFlex="64px">
+    <mat-form-field fxFlex="100" class="full-width" [floatPlaceholder]="'never'">
       <input matInput placeholder="Type your message" [(ngModel)]="newMsgText">
     </mat-form-field>
 

@@ -1,0 +1,20 @@
+.card-wrap {
+    max-width:80vw;
+    min-width:33vw;
+    margin:auto;
+    .mat-card {
+        text-align:center;
+        .mat-input-container {
+            margin: auto;
+        }
+
+        button {
+            align-self:right;
+        }
+    }
+}
+
+.wrapper {
+    padding:24px;
+    height:100vh;
+}

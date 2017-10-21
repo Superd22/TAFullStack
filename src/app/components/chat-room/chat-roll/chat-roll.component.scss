@@ -1,4 +1,26 @@
-.text-messages {
-    max-height:70vh;
-    overflow-y:scroll;
+.chat-wrapper {
+    display:flex;
+    height:calc(100% - 48px);
+    min-height: calc(100% - 48px);
+    max-height: calc(100% - 48px);
+    .text-messages {
+        overflow-y:scroll;
+    }
+
+    .no-message {
+        text-align: center;
+        font-family: "Verdana";
+        h2 {font-size: 2em; margin-bottom:0px;}
+    }
+
+}
+
+.fetching {
+    p {
+        margin: 0px;
+        padding: 8px 0px;
+        text-align: center;
+        background: white;
+        font-family: "Roboto";
+    }
 }

@@ -42,7 +42,6 @@ export class ChatRoomService {
       if (newChannel.isOpenChannel()) (<OpenChannel>newChannel).enter((openChannel, error) => { });
 
       // Finally we can tell the app this is now the new main channel
-      console.log("nexting", newChannel);
       this._currentChannel.next(newChannel);
     }
   }

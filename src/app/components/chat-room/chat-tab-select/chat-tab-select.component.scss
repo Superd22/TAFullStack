@@ -1,0 +1,16 @@
+.relative {
+    position:relative;
+    .mat-card {
+        position:absolute;
+        min-width:66%;
+        right:0px;
+    }
+}
+
+.mat-tab-link {
+    &.private {
+        background: rgba(0,0,0,0.2);
+        color: #1d1d1d;
+        font-weight: bolder;
+    }
+}

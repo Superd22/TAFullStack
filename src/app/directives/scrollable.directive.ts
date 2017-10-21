@@ -39,6 +39,14 @@ export class ScrollableDirective {
     }
   }
 
+  /**
+   * Force a scroll to the bottom
+   */
+  public forceBottom() {
+    this._userBottom = true;
+    setTimeout(() => this._el.scrollBy(0, this._el.scrollHeight));
+  }
+
   /** the element we're currently scrolling */
   private get _el(): HTMLElement { return this._elRef.nativeElement; }
 

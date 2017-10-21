@@ -1,2 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$candy-app-primary: mat-palette($mat-indigo);
+$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$candy-app-warn:    mat-palette($mat-red);
+
+$custom-mat-light-theme-foreground: (
+    base:              black,
+    divider:           $black-12-opacity,
+    dividers:          $black-12-opacity,
+    disabled:          rgba(black, 0.38),
+    disabled-button:   rgba(black, 0.38),
+    disabled-text:     rgba(black, 0.38),
+    hint-text:         rgba(black, 0.38),
+    secondary-text:    rgba(black, 0.54),
+    icon:              rgba(black, 0.54),
+    icons:             rgba(black, 0.54),
+    text:              rgba(black, 0.87),
+    slider-min:        rgba(black, 0.87),
+    slider-off:        rgba(black, 0.26),
+    slider-off-active: rgba(black, 0.38),
+  );
+$custom-mat-light-theme-background: (
+    status-bar: map_get($mat-grey, 600),
+    app-bar:    map_get($mat-grey, 400),
+    background: map_get($mat-grey, 300),
+    hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+    card:       map_get($mat-grey, 50),
+    dialog:     white,
+    disabled-button: $black-12-opacity,
+    raised-button: white,
+    focused-button: $black-6-opacity,
+    selected-button: map_get($mat-grey, 300),
+    selected-disabled-button: map_get($mat-grey, 400),
+    disabled-button-toggle: map_get($mat-grey, 200),
+    unselected-chip: map_get($mat-grey, 300),
+    disabled-list-option: map_get($mat-grey, 200),
+  );
+  
+
+@function custom-mat-light-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+    @return (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+      is-dark: false,
+      foreground: $custom-mat-light-theme-foreground,
+      background: $custom-mat-light-theme-background,
+    );
+  }
+// Create the theme object (a Sass map containing all of the palettes).
+$fafs-app-theme: custom-mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($fafs-app-theme);
+
+body {
+    background: map_get($mat-grey, 200);
+    margin:0px;
+}

@@ -1,5 +1,9 @@
-<div class="container">
-  <tafullstack-chat-tab-select></tafullstack-chat-tab-select>
-  <tafullstack-chat-roll></tafullstack-chat-roll>
-  <tafullstack-user-list></tafullstack-user-list>
+<div class="container" fxLayout fxLayoutWrap>
+  <div class="chat-box" fxLayout fxLayoutWrap>
+    <div class="left" fxFlex.lt-md="100" fxFlex.gt-md="85" fxLayout="column">
+      <tafullstack-chat-tab-select fxFlex></tafullstack-chat-tab-select>
+      <tafullstack-chat-roll fxFlex="100"></tafullstack-chat-roll>
+    </div>
+    <tafullstack-user-list fxFlex.lt-md="100" fxFlex.gt-md="15"></tafullstack-user-list>
+  </div>
 </div>
